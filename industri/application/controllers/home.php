@@ -25,6 +25,7 @@ class home extends CI_Controller {
 	 */
 	public function index()
 	{
+		//menampilkan view login
 		$this->load->view('login');
 	}
 
@@ -34,6 +35,7 @@ class home extends CI_Controller {
 	}
 
 function aksi_login(){
+	//proses verifikasi login
 	$username = $this->input->post('username'); //mengambil values dari username
 	$password = $this->input->post('password'); //mengambil values dari password
 	//menjadikan data yang diambil tadi menjadi array

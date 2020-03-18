@@ -10,6 +10,7 @@ class kirim extends CI_Controller {
     $this->load->helper('url');
     }
     public function index(){
+      //menampilkan barang yang akan dikirim menggunakan library cart sebelum disimpan pada database
       $items = $this->cart->contents(); 
       $data['tampil']= $this->m_receive->show_barang()->result();
       $data['barang']= $this->m_receive->barang()->result();
@@ -17,6 +18,7 @@ class kirim extends CI_Controller {
       $this->load->view('v_kirim',array('items' => $items));
     }
     public function add(){
+      //menambahkan cart 
       $kode = $this->input->post('kode');
       $nama = $this->input->post('nama');
       $harga = $this->input->post('harga');
@@ -30,13 +32,8 @@ class kirim extends CI_Controller {
       $this->cart->insert($data);
       redirect(base_url('kirim'));
     }
-    function tampil(){
-      $cart= $this->cart->contents();
-      echo "<pre>";
-      print_r($cart);
-
-    }
     function simpan(){
+      //menyimpan data pengiriman pada database
       $kode = $this->input->post('kode_kirim');
       $tanggal = $this->input->post('tanggal');
       $pengirim = $this->input->post('nama_pengirim');
@@ -48,6 +45,7 @@ class kirim extends CI_Controller {
         'tujuan'=>$tujuan
       );
       $this->m_kirim->add($data1,'pengiriman');
+      //penyimpanan data barang yang akan dikirim pada database
       foreach ($this->cart->contents() as $item) {
 
         $data=array(

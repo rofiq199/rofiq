@@ -8,9 +8,6 @@
             </div>
             <div class="card-body">
             <a  class="btn btn-primary" href="#" data-toggle="modal" data-target="#tambah">Tambah</a> 
-            <a  class="btn btn-primary" href="#" data-toggle="modal" data-target="#kirim">kirim</a>
-            <a  class="btn btn-secondary" href="#" data-toggle="modal" data-target="#masuk">Receive</a>
-
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>

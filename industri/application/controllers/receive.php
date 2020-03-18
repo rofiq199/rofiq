@@ -16,6 +16,7 @@ class receive extends CI_Controller{
       $this->load->view('v_receive',$data);
     }
     function add(){
+      //membuat waktu sehingga tanggal otomatis terisi berdasarkan waktu saat input 
       $timezone = time() + (60 * 60 * 6);
       $date = Date("Y-m-d H:i:s",$timezone);
       $kode_receive = $this->input->post('kode_receive');
@@ -27,6 +28,7 @@ class receive extends CI_Controller{
         'kode_supplier' =>$kode_supplier ,
         'tanggal_receive' => $date
     );
+    //pada prosess receive hanya ada 1 barang pada tiap receiver karena pada tiap satu kode receive hanya memiliki 1 kode barang
     $data1 = array(
       'kode_receive' =>$kode_receive ,
       'kode_barang' =>$kode_barang ,

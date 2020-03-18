@@ -7,12 +7,14 @@ class supplier extends CI_Controller{
                 $this->load->helper('url');
     }
     public function index(){
+      //menampilkan seluruh data supplier
       $data['supplier']= $this->m_supplier->tampil()->result();
       $this->load->view('tabel/navbar');
       $this->load->view('v_supplier',$data);
     }
 
     function add(){
+      //proses penyimpanan data supplier pada database 
       $kode_supplier = $this->input->post('kode_supplier');
       $nama_supplier = $this->input->post('nama_supplier');
       $kontak = $this->input->post('kontak');
@@ -26,13 +28,14 @@ class supplier extends CI_Controller{
     }
 
     function hapus($id){
+      //hapus supllier berdasarkan kode supplier
       $where = array('kode_supplier' => $id);
       $this->m_supplier->hapus_data($where,'supplier');
       redirect(base_url('supplier'));
       }
 
     function update(){
-
+      //proses ubah data supplier
         $kode_supplier = $this->input->post('kode_supplier1');
         $nama_supplier = $this->input->post('nama_supplier1');
         $kontak = $this->input->post('kontak1');
